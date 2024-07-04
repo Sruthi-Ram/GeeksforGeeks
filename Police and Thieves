@@ -1,0 +1,29 @@
+class Solution 
+{ 
+    static int catchThieves(char arr[], int n, int k) 
+	{ 
+      
+        int count = 0;
+        
+        // Traverse through the array
+        for (int i = 0; i < n; i++) {
+            // Check for policemen 'P'
+            if (arr[i] == 'P') 
+            {
+                int start=(i-k<=0)?0:i-k;
+                int end=(i+k>=n)?n-1:i+k;
+               
+                for (int j=start;j<=end;j++) {
+                    if (arr[j] == 'T')
+                    {
+                        arr[i]='c';
+                        arr[j] = 'c';  // Mark the thief as caught
+                        count++;
+                        break;  // Break once a thief is caught by this policeman
+                    }
+                }
+            }
+       }
+        return count;
+	} 
+} 
