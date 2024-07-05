@@ -1,0 +1,19 @@
+class Solution {
+    static int dataTypeSize(String str) {
+        // code here
+switch(str) {
+            case "Character":
+                return Character.BYTES; // Size of Character data type in bytes
+            case "Integer":
+                return Integer.BYTES; // Size of Integer data type in bytes
+            case "Long":
+                return Long.BYTES; // Size of Long data type in bytes
+            case "Float":
+                return Float.BYTES; // Size of Float data type in bytes
+            case "Double":
+                return Double.BYTES; // Size of Double data type in bytes
+            default:
+                return -1; // Handle unknown data types, though typically not expected in this context
+        }
+    }
+}
