@@ -1,0 +1,31 @@
+class Solution {
+    static int minCandy(int N, int ratings[]) {
+        // code here
+        int candies1[]=new int[N];
+        int candies2[]=new int[N];
+        Arrays.fill(candies1,1);
+        Arrays.fill(candies2,1);
+        for(int i=1;i<N;i++)
+        {
+            //left to right
+            if(ratings[i]>ratings[i-1])
+            {
+                candies1[i]=candies1[i-1]+1;
+            }
+        }
+        //right to left
+        for(int i=N-2;i>=0;i--)
+        {
+            if(ratings[i]>ratings[i+1])
+            {
+                candies2[i]=candies2[i+1]+1;
+            }
+        }
+        int totalcandies=0;
+        for(int i=0;i<N;i++)
+        {
+            totalcandies+=Math.max(candies1[i],candies2[i]);
+        }
+        return totalcandies;
+    }
+}
