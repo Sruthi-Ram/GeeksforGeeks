@@ -1,0 +1,37 @@
+/*
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int d) {data = d; next = null; }
+}
+
+*/
+
+//Function should return the length of the loop in LL.
+
+class Solution
+{
+    //Function to find the length of a loop in the linked list.
+    static int countNodesinLoop(Node head)
+    {   
+        Node th=head;
+        HashMap<Node,Integer> hm=new HashMap();
+        int count=1;
+        while(th.next!=null)
+        {
+            if(hm.containsKey(th))
+            {
+                int value=hm.get(th);
+                return count-value;
+            }
+            hm.put(th,count++);
+            //count++;
+            th=th.next;
+        }
+        return 0;
+        
+        //Add your code here.
+    }
+}
