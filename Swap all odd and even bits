@@ -1,0 +1,14 @@
+class Solution
+{
+    //Function to swap odd and even bits.
+    public static int swapBits(int n) 
+    {
+	    // Your code
+	    int even=n&0xAAAAAA;
+	    int odd=n&0x555555;
+	    even>>=1;
+	    odd<<=1;
+	    return (even|odd);
+	}
+    
+}
