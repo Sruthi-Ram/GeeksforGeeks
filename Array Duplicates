@@ -1,0 +1,25 @@
+class Solution {
+    public static ArrayList<Integer> duplicates(int[] arr) {
+        // code here
+        int n = arr.length;
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            int index = Math.abs(arr[i]);
+            if (arr[index] < 0) {
+                result.add(index);
+            } else {
+                arr[index] = -arr[index];
+            }
+        }
+
+        if (result.isEmpty()) {
+            result.add(-1);
+        } else {
+            Collections.sort(result);
+        }
+
+        return result;
+    }
+
+    }
