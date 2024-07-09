@@ -1,0 +1,36 @@
+/*
+class Node {
+    int data;
+    Node next;
+    Node(int d)  { data = d;  next = null; }
+}
+*/
+class Solution {
+    Node deleteMid(Node head) {
+        // This is method only submission.
+        // You only need to complete the method.
+        //HashSet hs<Integer> hs=new HashSet<>();
+        Node th=head;
+        int count=0,mid;
+        if(head.next==null)
+        {
+            head=null;
+            return head;
+        }
+        while(th!=null)
+        {
+            count++;
+            th=th.next;
+        }
+        th=head;
+        mid=count/2;
+        for(int i=0;i<mid-1;i++)
+        {
+            th=th.next;
+        }
+        th.next=th.next.next;
+        
+        return head;
+        
+    }
+}
