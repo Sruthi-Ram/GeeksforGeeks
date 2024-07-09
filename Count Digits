@@ -1,0 +1,19 @@
+class Solution{
+    static int evenlyDivides(int N){
+        // code here
+        int count=0,rem,t=N;
+       while(t>0)
+       {
+           rem=t%10;
+           if(rem!=0&&N%rem==0)
+           {
+               count++;
+           }
+           t=t/10;
+       }
+       if(count>0)
+       return count;
+       else
+       return 0;
+    }
+}
