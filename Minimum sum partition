@@ -1,0 +1,39 @@
+//code here
+int dp[][];
+
+	public int minDifference(int arr[], int n) 
+	{ 
+	    int sum = 0;
+	    for(int i=0; i<n; i++) sum += arr[i];
+	    
+	    dp = new int[n][sum+1];
+	    
+	    for(int i=0; i<n; i++) {
+	        for(int j=0; j<=sum; j++) {
+	            dp[i][j] = -1;
+	        }
+	    }
+	    
+	    // Your code goes here
+	    return solve(arr, 0, 0, 0, Integer.MAX_VALUE);
+	    
+	}
+	
+	public int solve(int arr[], int i, int sum1, int sum2, int result) {
+	    
+	    if(i >= arr.length) {
+	       result = Math.min(Math.abs(sum1-sum2), result);
+	       return result;
+	    }
+	    
+	    if(dp[i][sum1] != -1) return dp[i][sum1];
+	    
+	    sum1 += arr[i];
+	    int result1 = solve(arr, i+1, sum1, sum2, result);
+	    
+	    sum1 -= arr[i];
+	    sum2 += arr[i];
+	    int result2 = solve(arr, i+1, sum1, sum2, result);
+	    
+	    dp[i][sum1] = Math.min(result1, result2);
+	    return dp[i][sum1];
