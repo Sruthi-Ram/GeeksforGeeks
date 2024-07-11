@@ -1,0 +1,67 @@
+//code here
+if(node == null || node.next == null || k == 1)
+        {
+            return node;
+        }
+        Node temp = node;
+        Node prev = null;
+        Node next = null;
+        Node next2 = null;
+        Node prev2 = null;
+        int j = 0;
+        
+        while(temp != null)
+        {
+            int i = 0;
+            Node temp2 = temp;
+            while(i < k && temp != null)
+            {
+                prev2 = temp;
+                temp = temp.next;
+                i++;
+                if(i == k-1)
+                {
+                    if(temp != null){
+                    next = temp.next;
+                    temp.next = null;
+                    }
+                    i = k;
+                    break;
+                }
+            }
+            if(j == 0)
+            {
+                node = temp;
+            }
+            temp2 = reverse(temp2);
+            j++;
+          
+            if(j > 1)
+            {
+                if(temp != null)
+                prev.next = temp;
+                else
+                prev.next = prev2;
+            }
+            prev = temp2;
+            if(temp != null)
+            temp = next;
+        }
+       
+        return node;
+    }
+    public static Node reverse(Node curr)
+    {
+        Node prev = null;
+        Node head2 = curr;
+        Node next = null;
+        
+        while(curr != null)
+        {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        
+        return head2;
