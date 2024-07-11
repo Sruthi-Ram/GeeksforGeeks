@@ -1,0 +1,42 @@
+//code here
+int mod=97;//to convert the character to its quivalent index
+     ArrayList<ArrayList<Character>>list=new ArrayList<>();//graph
+     for(int i=0;i<K;i++){
+         list.add(new ArrayList<Character>());//initializing the indexes of graph from 0 to k-1
+     }
+     for(int i=0;i<n-1;i++){
+        int j=0,k=0;
+        while((j<dict[i].length()&&k<dict[i+1].length())&&(dict[i].charAt(j)==dict[i+1].charAt(k))){//searching for first miss matching charecter in to adjacent word in dict
+        k++;
+        j++;
+        }
+        if(j==dict[i].length()||k==dict[i+1].length()){//for condition like this "aaab" "aaa",we will avoid it
+        continue;
+        }
+        list.get(dict[i].charAt(j)%mod).add(dict[i+1].charAt(k));//charecter of dict[i] will come first and then the character of dict[i+1]will come
+     }
+//from here just performed the topo sort on graph we created and strored the sorted character in ans string
+     int indeg[]=new int[K];
+     for(ArrayList<Character>i:list){
+         for(char j:i){
+             indeg[j%mod]+=1;
+         }
+     }
+     Queue<Character>q=new LinkedList<>();
+     for(int i=0;i<K;i++){
+         if(indeg[i]==0){
+             q.add((char)(i+mod));
+         }
+     }
+     String ans="";
+     while(!q.isEmpty()){
+         char temp=q.remove();
+         ans=ans+temp;
+         for(char i:list.get(temp%mod)){
+         if(--indeg[i%mod]==0){
+             q.add(i);
+         }
+             } 
+         }
+  
+         return ans;
