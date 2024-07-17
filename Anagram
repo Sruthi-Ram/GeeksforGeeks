@@ -1,0 +1,18 @@
+class Solution
+{    
+    //Function is to check whether two strings are anagram of each other or not.
+    public static boolean isAnagram(String a,String b)
+    {
+        char stra[]=a.toCharArray();
+        char strb[]=b.toCharArray();
+        Arrays.sort(stra);
+        Arrays.sort(strb);
+        String str1=new String(stra);
+        String str2=new String(strb);
+        if(str1.equals(str2))
+        return true;
+        return false;
+        // Your code here
+        
+    }
+}
